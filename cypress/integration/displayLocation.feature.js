@@ -1,4 +1,18 @@
 describe('Display the location', () => {
+  beforeEach(() => {
+    cy.server()
+    cy.route(
+      'GET',
+      'https://api.openweathermap.org/data/2.5/**',
+      'fx:open_weather.json'
+    )
+    cy.route(
+      'GET',
+      'https://api.opencagedata.com/geocode/v1/json/**',
+      'fx:open_cage.json'
+    )
+  })
+
   it('on initial render', () => {
     cy.visit('/', ({
       onBeforeLoad(window) {
@@ -17,9 +31,10 @@ describe('Display the location', () => {
     }))
 
     cy.get('[data-cy="weather-display"]').within(() => {
-      cy.get('[data-cy="location"]').should('contain', 'Copenhagen'),
+      cy.get('[data-cy="location"]').should('contain', 'Virum')
       cy.get('[data-cy="temp"]').should('contain', "22℃")
     })
+
   })
 })
 
