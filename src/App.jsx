@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class App extends React.Component {
   state = {
-    location: {}
+    weatherInfo: {}
   } 
 
 
@@ -17,17 +17,21 @@ class App extends React.Component {
         location: locationResponse.data.results[0].components.postal_city,
         temperature: weatherResponse.data.current.temp
       }
-      
+      this.setState({ weatherInfo: weatherInfo })
     })
   }
 
   render() {
     
     return (
-      <div>
-        <h1>This is your geolocation</h1>
-        <p>Latitude: </p>
-        <p>Longitude: </p>
+      <div data-cy="weather-display">
+        <h1>Your Location</h1>
+        <div data-cy="location">
+          Your location is: {this.state.weatherInfo.location}
+        </div>
+        <div data-cy="temp">
+          The temperature is: {this.state.weatherInfo.temperature}℃
+        </div>
       </div>
     );
   }
