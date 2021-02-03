@@ -19,7 +19,7 @@
     "cy:open": "cypress open",
     "cypress": "start-server-and-test start:silent http://localhost:3001/ cy:open",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test specs",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
