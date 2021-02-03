@@ -31,8 +31,8 @@ describe('Display the location', () => {
     }))
 
     cy.get('[data-cy="weather-display"]').within(() => {
-      cy.get('[data-cy="location"]').should('contain', 'Virum')
-      cy.get('[data-cy="temp"]').should('contain', "22℃")
+      cy.get('[data-cy="data"]').should('contain', 'Virum')
+      cy.get('[data-cy="data"]').should('contain', "22℃")
     })
 
   })
