@@ -6,14 +6,16 @@ class App extends React.Component {
     location: {}
   } 
 
+
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(obj => {
-      console.table(obj);
-      this.setState({ location: obj.coords })
+    navigator.geolocation.getCurrentPosition(response => {
+      this.setState({ location: response.coords })
+      
     })
   }
 
   render() {
+    debugger
     return (
       <div>
         <h1>This is your geolocation</h1>
