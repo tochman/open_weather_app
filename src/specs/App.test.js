@@ -11,6 +11,25 @@ import axios from 'axios'
 // jest.spyOn(axios,'get').mockReturnValueOnce(mock2)
 // Have to mock navigator.geolocation
 
+
+// const mockGeolocation = {
+//   getCurrentPosition: jest.fn()
+//     .mockImplementationOnce((success) => Promise.resolve(success({
+//       coords: {
+//         latitude: 55.7842,
+//         longitude: 12.4518,
+//       }
+//     })))
+// };
+// global.navigator.geolocation = mockGeolocation;
+
+let pos = {
+  coords: {
+    latitude: 55.7842,
+    longitude: 12.4518
+  }
+}
+
 let weatherMock = {
   data: {
     current: {
@@ -26,11 +45,11 @@ let axiosWeatherSpy;
 let axiosLocationSpy;
 
 beforeEach(() => {
-  jest.spyOn(screen.navigator.geolocation.getCurrentPosition(), 'get').mockImplementation(() => {
-    console.log()
-    //axiosWeatherSpy = jest.spyOn(axios, 'get').mockReturnValueOnce(weatherMock)
-  })
+  const mockGeolocation = {
+    getCurrentPosition: jest.fn(axiosWeatherSpy = jest.spyOn(axios, 'get').mockReturnValueOnce(weatherMock))
+  };
   
+  global.navigator.geolocation = mockGeolocation;
   
   
   render(<App />)

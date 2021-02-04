@@ -32,14 +32,14 @@ class App extends React.Component {
 
   render() {
     const { weatherInfo } = this.state;
-
+    
     return (
       <div className="main-container" data-cy="weather-display">
         <Header size="huge" textAlign="center">Your Location</Header>
         <Segment className="main-segment" placeholder>
           <Grid columns={2} stackable textAlign="center">
             <Divider vertical />
-
+            
             <Grid.Row>
               <Grid.Column>
                 <Header data-cy="data" icon>

@@ -7,15 +7,9 @@ import '@testing-library/jest-dom';
 // const mockGeolocation = {
 //   getCurrentPosition: jest.fn()
 //     .mockImplementationOnce((success) => Promise.resolve(success({
-//       weatherMock: {
-//         data: {
-//           current: {
-//             temp: 22,
-//             weather: [
-//               {main: "Snow"}
-//             ]
-//           }
-//         }
+//       coords: {
+//         latitude: 55.7842,
+//         longitude: 12.4518,
 //       }
 //     })))
 // };
