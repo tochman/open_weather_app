@@ -51,11 +51,12 @@ class App extends React.Component {
               </Grid.Column>
 
               <Grid.Column>
-                <Header icon>
+                <Header data-cy="weather" icon>
                   <Icon name="snowflake" />
                   Weather:
+                  <p>{weatherInfo.weather && (weatherInfo.weather[0].main)}</p>
                 </Header>
-                <p>{weatherInfo.weather && (weatherInfo.weather[0].main)}</p>
+                
               </Grid.Column>
             </Grid.Row>
           </Grid>
