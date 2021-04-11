@@ -38,5 +38,3 @@ describe('Display the location', () => {
 
   })
 })
-
-// cy.get('[data-cy=""]')
