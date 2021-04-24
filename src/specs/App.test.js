@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import React from 'react'
 import App from '../App';
 import axios from 'axios'
-import { openCageResponse } from './mocks/openCageMock'
-import { openWeatherResponse } from './mocks/openWeatherResponse'
+import { openCageResponse } from './mocks/openCageMockResponse'
+import { openWeatherResponse } from './mocks/openWeatherMockResponse'
 
 let axiosSpy, getPositionSpy
 
@@ -13,12 +13,10 @@ jest.mock('react-chartjs-2', () => ({
 
 describe('App.jsx', () => {
 
-
   beforeEach(() => {
     axiosSpy = jest.spyOn(axios, 'get')
       .mockResolvedValueOnce(openCageResponse)
       .mockResolvedValueOnce(openWeatherResponse)
-
     getPositionSpy = jest.spyOn(App.prototype, 'getPosition')
       .mockReturnValue(
         {
@@ -29,25 +27,22 @@ describe('App.jsx', () => {
         }
       )
     render(<App />)
-
   })
 
-  it('calls getPosition', () => {
+  it.only('is expected to call getPosition', () => {
     expect(getPositionSpy).toHaveBeenCalledTimes(1)
-
   })
 
-  it('calls weather API', () => {
+  it('is expected to make calls to both API\'s', () => {
     expect(axiosSpy).toHaveBeenCalledTimes(2)
   })
 
-  it('has city name', () => {
+  it('is expected to render city name', () => {
     expect(screen.getByText("Your location: Virum", { exact: false }))
       .toBeInTheDocument();
   });
 
-  it('has temperature', () => {
-    // screen.debug()
+  it('is expected to render temperature', () => {
     expect(screen.getByText("The temperature: 22℃", { exact: false }))
       .toBeInTheDocument();
   });
